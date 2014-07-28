@@ -10,8 +10,8 @@
 		private $winTeamId;
 		private $penaltyA;
 		private $penaltyB;
-		private $teamA;
-		private $teamB;
+		private $teamAId;
+		private $teamBId;
 
 		public function getDate(){
 			return $this->date;
@@ -85,20 +85,42 @@
 			return  $this->penaltyB;
 		}
 
-		public function setTeamA($teamA){
-			$this->teamA=$teamA;
+		public function setTeamAId($teamAId){
+			$this->teamAId=$teamAId;
 		}
 
-		public function getTeamA(){
-			return $this->$teamA;
+		public function getTeamAId(){
+			return $this->$teamAId;
 		}
 
-		public function setTeamB($teamB){
-			$this->teamB=$teamB;
+		public function setTeamBId($teamBId){
+			$this->teamBId=$teamBId;
 		}
 
-		public functin getTeamB(){
-			return $this->teamB;
+		public function getTeamBId(){
+			return $this->teamBId;
 		}
+
+		public function toJson()
+		{
+			return urldecode (json_encode( array("matchId"=>$this->matchId,"date"=>urlencode($this->date),"isStart"=>$this->isStart,"matchProperty"=>$this->matchProperty,"scoreA"=>$this->scoreA,"scoreB"=>$this->scoreB, "winTeamId"=>$this->winTeamId,"teamAId"=>$this->teamAId,"teamBId"=>$this->teamBId,"penaltyA"=>$this->penaltyA,"penaltyB"=>$this->penaltyB ) ) );
+		}
+
+		public static function arrayToJson($matches)
+		{
+			$result='[';
+			$arrayCount=(count($matches));
+			for ($i=0; $i<$arrayCount; $i++)
+    		{
+    			$item=$matches[$i];
+        		$result=$result.$item->toJson();
+        		if ($i<$arrayCount-1)
+        		{
+           		 	$result=$result.',';
+        		}
+    		}
+    		$result=$result.']';
+    		return $result;	
+		} 
 	}
 ?>
