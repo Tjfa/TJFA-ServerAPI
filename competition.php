@@ -4,13 +4,13 @@
 
 	include_once ('CompetitionDao.php');
 
-	$type=$_POST['type'];
-	$limit=$_POST['limit'];
-	$competitionId=$_POST['competitionId'];
+	// $type=$_POST['type'];
+	// $limit=$_POST['limit'];
+	// $competitionId=$_POST['competitionId'];
 
-	// $type=$_GET['type'];
-	// $limit=$_GET['limit'];
-	// $competitionId=$_GET['competitionId'];
+	$type=$_GET['type'];
+	$limit=$_GET['limit'];
+	$competitionId=$_GET['competitionId'];
 
 	$competitionDao=CompetitionDao::sharedCompetitionDao();
 

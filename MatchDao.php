@@ -15,7 +15,7 @@
 			if (self::$_sharedMatchDao==null){
 				self::$_sharedMatchDao=new MatchDao();
 			}
-			return self::$sharedMatchDao;
+			return self::$_sharedMatchDao;
 		}
 
 		public function setMatchWithRow($row){
@@ -40,13 +40,13 @@
 		{
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
-			$sql="SELECT * FROM `Match` WHERE competitionId=$competitionId";
+			$sql="SELECT * FROM Game WHERE competitionId=$competitionId" ;
 			$result=mysql_query($sql);
 			$database->closeDatabase();
 
 			$matches=array();
 			while ($row=mysql_fetch_array($result)){
-				$match=$this->setCompetitionWithRow($row);
+				$match=$this->setMatchWithRow($row);
 				array_push($matches, $match);	
 			}
 			

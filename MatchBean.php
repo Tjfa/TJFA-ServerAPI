@@ -12,6 +12,15 @@
 		private $penaltyB;
 		private $teamAId;
 		private $teamBId;
+		private $competitionId;
+  		
+		public function setCompetitionId($competitionId){
+			$this->competitionId=$competitionId;
+		}
+
+		public function getCompetitionId(){
+			return $this->competitionId;
+		}
 
 		public function getDate(){
 			return $this->date;
@@ -103,7 +112,7 @@
 
 		public function toJson()
 		{
-			return urldecode (json_encode( array("matchId"=>$this->matchId,"date"=>urlencode($this->date),"isStart"=>$this->isStart,"matchProperty"=>$this->matchProperty,"scoreA"=>$this->scoreA,"scoreB"=>$this->scoreB, "winTeamId"=>$this->winTeamId,"teamAId"=>$this->teamAId,"teamBId"=>$this->teamBId,"penaltyA"=>$this->penaltyA,"penaltyB"=>$this->penaltyB ) ) );
+			return urldecode (json_encode( array("matchId"=>$this->matchId,"date"=>urlencode($this->date),"isStart"=>$this->isStart,"matchProperty"=>$this->matchProperty,"scoreA"=>$this->scoreA,"scoreB"=>$this->scoreB, "winTeamId"=>$this->winTeamId,"teamAId"=>$this->teamAId,"teamBId"=>$this->teamBId,"penaltyA"=>$this->penaltyA,"penaltyB"=>$this->penaltyB ,"competitionId"=>$this->competitionId) ) );
 		}
 
 		public static function arrayToJson($matches)
