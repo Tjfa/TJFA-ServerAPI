@@ -67,4 +67,21 @@
 			return $competitions;
 		}
 
+		public function getAllCompetition()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="SELECT * FROM Competition order by competitionId desc";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$competitions=array();
+			while ($row=mysql_fetch_array($result)){
+				$competition=$this->setCompetitionWithRow($row);
+				array_push($competitions, $competition);	
+			}
+			
+			return $competitions;
+		}
+
 	}
