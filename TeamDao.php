@@ -78,13 +78,13 @@
 		{
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
-			$sql="select count(teamId) frome Team";
+			$sql="select count(teamId) from Team";
 			$result=mysql_query($sql);
 			$database->closeDatabase();
 
-			$row=mysql_fetch_object($result);
+			$row=mysql_fetch_array($result);
 
-			echo $row;	
+			echo $row[0];	
 		}
 	}
 
