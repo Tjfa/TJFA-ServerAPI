@@ -56,6 +56,36 @@
 			
 			return $teams;
 		}
+
+		public function getAllTeams()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="SELECT * FROM Team " ;
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$teams=array();
+			while ($row=mysql_fetch_array($result)){
+				$team=$this->setTeamWithRow($row);
+				array_push($teams, $team);	
+			}
+			
+			return $teams;
+		}
+
+		public function getTeamCount()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="select count(teamId) frome Team";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$row=mysql_fetch_object($result);
+
+			echo $row;	
+		}
 	}
 
 ?>

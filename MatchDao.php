@@ -52,6 +52,24 @@
 			
 			return $matches;
 		}
+
+		public function getAllMatches()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="SELECT * FROM Game" ;
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$matches=array();
+			while ($row=mysql_fetch_array($result)){
+				$match=$this->setMatchWithRow($row);
+				array_push($matches, $match);	
+			}
+			
+			return $matches;
+
+		}
 	}
 
 ?>
