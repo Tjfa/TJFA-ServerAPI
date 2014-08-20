@@ -81,4 +81,17 @@
 			return urldecode (json_encode( array("content"=>$row['content'])));
 		}
 
+		public function getNewsCount()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="select count(newsId) from News";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$row=mysql_fetch_array($result);
+
+			return $row[0];	
+		}
+
 	}

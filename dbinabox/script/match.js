@@ -21,7 +21,7 @@ $(document).ready(function(){
             "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
             "sSearch":"搜索:",
         },
-
+        "aLengthMenu": [ [10,50,100,-1], [10,50,100,"所有"] ],	
         "bPaginate": true,
 
     });
@@ -64,6 +64,7 @@ $(document).ready(function(){
 			oTable.find("a.delete").click(function(event) {
 				console.log($(this).parent().parent());
 			});
+
 		}
 	});	
 });

@@ -70,6 +70,21 @@
 			return $matches;
 
 		}
+
+		public function getMatchCount()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$sql="select count(matchId) from Game";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$row=mysql_fetch_array($result);
+
+			return $row[0];	
+		}
+
 	}
 
 ?>

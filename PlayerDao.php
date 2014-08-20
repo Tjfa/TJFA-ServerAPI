@@ -48,6 +48,19 @@
 			return $players;
 		}
 
+		public function getPlayerCount()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="select count(playerId) from Player";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$row=mysql_fetch_array($result);
+
+			return $row[0];	
+		}
+
 
 	}
 

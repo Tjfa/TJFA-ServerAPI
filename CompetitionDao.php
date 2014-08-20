@@ -84,4 +84,20 @@
 			return $competitions;
 		}
 
+
+		public function getCompetitionCount()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$sql="select count(competitionId) from Competition";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$row=mysql_fetch_array($result);
+
+			return $row[0];	
+		}
+
+
 	}

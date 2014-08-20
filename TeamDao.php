@@ -84,7 +84,7 @@
 
 			$row=mysql_fetch_array($result);
 
-			echo $row[0];	
+			return $row[0];	
 		}
 	}
 

@@ -2,8 +2,8 @@
 	
 	header("Content-Type:text/html; charset=utf8");
 
-
-	$content=file_get_contents("http://api.flurry.com/appMetrics/NewUsers?apiAccessCode=55GT55V8T5DFKGF8R747&apiKey=9BTNDJ79TJ5JST5TTF2B&startDate=2014-08-02&endDate=2014-08-13&country=all&groupBy=months","rb");
+///////////////////////////////////////////////flurry////////////////////////////////////////////
+	$content=file_get_contents("http://api.flurry.com/appMetrics/NewUsers?apiAccessCode=55GT55V8T5DFKGF8R747&apiKey=9BTNDJ79TJ5JST5TTF2B&startDate=2014-08-02&endDate=2014-12-31&country=all&groupBy=months","rb");
 
 	//sb flurry 给 api 加一个 @ 符号 给你跪了
 	$content=str_replace("@", "", $content);
@@ -11,11 +11,16 @@
 	$content=json_decode($content);
 
 	$totalUser=0;
-
+	$usValue ;
+	$cnValue ;
+	$frValue ;
+	$jpValue ;
 	foreach ($content->country as $key=>$value) {
 		$totalUser+=$value->day->value;
+		if ( $value->country == "US" ) $usValue= $value;
+		else if ($value->country == "CN" ) $cnValue= $value;
+		else if ($value->country == "FR") $frValue=$value;
 	}
-
 ?>
 
 <html>
@@ -46,7 +51,7 @@
 			}
 	
 			.feat {
-				text-align: left; 
+				text-align: center; 
 			}
 
 	
@@ -59,8 +64,9 @@
 		
   		</style>
 
-
-  		<script src="/script/jquery-ui-1.9.2.custom.min.js"></script>
+  		<script src="script/jquery.1.9.1.js"></script>
+  		<script src="script/jquery-ui-1.9.2.custom.min.js"></script>
+  		<script src="script/index.js"></script>
 
 	</header>
 
@@ -94,7 +100,7 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='china_user'>0</h1>
+							<h1><?php  echo $cnValue->day->value; ?></h1>
 								<p class="lead">China</p>
 						</div>
 					</div>
@@ -102,14 +108,14 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1><?php echo $frValue->day->value; ?></h1>
 								<p class="lead">France</p>
 						</div>
 					</div>
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1 id='competitionCount'>0</h1>
 								<p class="lead">Competition</p>
 						</div>
 					</div>
@@ -117,7 +123,7 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1 id='matchCount'>0</h1>
 								<p class="lead">Match</p>
 						</div>
 					</div>
@@ -126,7 +132,7 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1 id='newsCount'>0</h1>
 								<p class="lead">News</p>
 						</div>
 					</div>
@@ -134,7 +140,7 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1 id='ebay_total_tps'>0</h1>
 								<p class="lead">Admin User</p>
 						</div>
 					</div>
@@ -148,7 +154,7 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1><?php echo $usValue->day->value; ?></h1>
 								<p class="lead">USA</p>
 						</div>
 					</div>
@@ -156,21 +162,21 @@
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1>0</h1>
 								<p class="lead">Japan</p>
 						</div>
 					</div>
 
 					<div class="feat-p">
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1 id='teamCount'>0</h1>
 								<p class="lead">Team</p>
 						</div>
 					</div>
 
 					<div class="feat-p" >
 						<div class="feat">
-							<h1 id='ebay_total_tps'>314,316</h1>
+							<h1 id='playerCount'>0</h1>
 								<p class="lead">Player</p>
 						</div>
 					</div>
