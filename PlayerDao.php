@@ -48,6 +48,24 @@
 			return $players;
 		}
 
+		public function getAllPlayers()
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="SELECT * FROM Player" ;
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$players=array();
+			while ($row=mysql_fetch_array($result)){
+				$player=$this->setPlayerWithRow($row);
+				array_push($players, $player);	
+			}
+			
+			return $players;
+
+		}
+
 		public function getPlayerCount()
 		{
 			$database=Database::sharedDatabase();

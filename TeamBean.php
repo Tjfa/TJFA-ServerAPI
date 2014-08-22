@@ -150,7 +150,7 @@
 
 		public function toJson()
 		{
-			return urldecode (json_encode( array("teamId"=>$this->teamId,"emblemPath"=>urlencode($this->emblemPath),"groupGoalCount"=>$this->groupGoalCount,"groupMissCount"=>$this->groupMissCount,"goalCount"=>$this->goalCount,"missCount"=>$this->missCount, "groupWinCount"=>$this->groupWinCount,"groupLostCount"=>$this->groupLostCount,"groupDrawCount"=>$this->groupDrawCount,"winCount"=>$this->winCount,"missCount"=>$this->missCount,"groupNo"=>urlencode($this->groupNo),"name"=>urlencode($this->name),"score"=>$this->score,"competitionId"=>$this->competitionId,"rank"=>$this->rank ) ) );
+			return urldecode (json_encode( array("teamId"=>$this->teamId,"emblemPath"=>urlencode($this->emblemPath),"groupGoalCount"=>$this->groupGoalCount,"groupMissCount"=>$this->groupMissCount,"goalCount"=>$this->goalCount,"missCount"=>$this->missCount, "groupWinCount"=>$this->groupWinCount,"groupLostCount"=>$this->groupLostCount,"groupDrawCount"=>$this->groupDrawCount,"winCount"=>$this->winCount,"lostCount"=>$this->lostCount,"missCount"=>$this->missCount,"groupNo"=>urlencode($this->groupNo),"name"=>urlencode($this->name),"score"=>$this->score,"competitionId"=>$this->competitionId,"rank"=>$this->rank ) ) );
 		}
 
 		public static function arrayToJson($teams)

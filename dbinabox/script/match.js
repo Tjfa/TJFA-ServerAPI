@@ -56,15 +56,6 @@ $(document).ready(function(){
 				oTable.fnAddData([val.matchId,val.competitionId,property,time,isStart,teamA.name,teamB.name,val.scoreA,val.scoreB,val.penaltyA,val.penaltyB]);
 			});
 
-			oTable.find("a.edit").click(function(event) {
-				$obj=$(this).parent().parent();
-				showEdit($obj);
-			});
-
-			oTable.find("a.delete").click(function(event) {
-				console.log($(this).parent().parent());
-			});
-
 		}
 	});	
 });
